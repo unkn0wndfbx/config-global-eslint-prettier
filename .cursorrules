@@ -1,0 +1,105 @@
+# Règles de linting globales pour Cursor - TypeScript/React
+
+## Règles principales
+
+- Toujours utiliser des interfaces pour les props des composants React
+- Interdire les export default sauf pour les constantes, configs, types et enums
+- Forcer le typage explicite des fonctions et paramètres
+- Utiliser des exports nommés pour tous les composants et fonctions
+- Formatage automatique avec Prettier à la sauvegarde
+
+## Exemples de bonnes pratiques
+
+### ✅ Composant avec interface pour les props
+
+```typescript
+interface ButtonProps {
+  text: string;
+  onClick: () => void;
+  variant?: 'primary' | 'secondary';
+}
+
+export const Button: React.FC<ButtonProps> = ({ text, onClick, variant = 'primary' }) => {
+  return (
+    <button
+      onClick={onClick}
+      className={variant}
+    >
+      {text}
+    </button>
+  );
+};
+```
+
+### ❌ Éviter les props inline
+
+```typescript
+// Ne pas faire ça
+export const Button = ({
+  text,
+  onClick,
+  variant = 'primary'
+}: {
+  text: string;
+  onClick: () => void;
+  variant?: 'primary' | 'secondary';
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      className={variant}
+    >
+      {text}
+    </button>
+  );
+};
+```
+
+### ✅ Export nommé (recommandé)
+
+```typescript
+export const MyComponent = () => <div>Hello</div>;
+export const myFunction = () => 'Hello';
+```
+
+### ❌ Export default (interdit sauf pour constantes)
+
+```typescript
+// Ne pas faire ça pour les composants
+export default MyComponent;
+
+// ✅ Autorisé uniquement pour les constantes
+export default {
+  API_URL: 'https://api.example.com',
+  VERSION: '1.0.0'
+};
+```
+
+## Structure des fichiers
+
+- Composants : PascalCase (ex: `Button.tsx`)
+- Hooks : camelCase avec préfixe `use` (ex: `useWidgetStatus.ts`)
+- Utilitaires : camelCase (ex: `date.ts`, `widget.ts`)
+- Types/Interfaces : camelCase (ex: `restaurant.ts`)
+
+## Règles de formatage
+
+- Longueur maximale de ligne : 120 caractères
+- Composants UI : maximum 700 lignes
+- Fichiers de logique : maximum 1000 lignes
+- Espacement : une ligne vide maximum entre les sections
+
+## Configuration Prettier
+
+- Guillemets simples pour les chaînes
+- Point-virgule à la fin des lignes
+- Pas de virgule finale
+- Parenthèses des flèches toujours
+- Une propriété par ligne pour JSX
+
+## Formatage automatique
+
+- Formatage à la sauvegarde activé
+- ESLint + Prettier intégrés
+- Correction automatique des erreurs
+- Organisation automatique des imports

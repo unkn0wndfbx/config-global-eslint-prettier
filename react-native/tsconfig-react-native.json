@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/shared/*": ["src/shared/*"],
+      "@/web/*": ["src/web/*"],
+      "@/native/*": ["src/native/*"],
+      "@/components/*": ["src/shared/components/*"],
+      "@/hooks/*": ["src/shared/hooks/*"],
+      "@/types/*": ["src/shared/types/*"],
+      "@/utils/*": ["src/shared/utils/*"],
+      "@/constants/*": ["src/shared/constants/*"]
+    },
+    "types": ["react-native", "jest", "node"],
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true
+  },
+  "include": ["src/**/*", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    "android",
+    "ios",
+    "expo",
+    "*.config.js",
+    "*.config.ts",
+    "*.config.mjs"
+  ],
+  "ts-node": {
+    "esm": true
+  }
+}
